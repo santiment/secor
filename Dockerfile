@@ -4,10 +4,12 @@ RUN apt-get update && apt-get install -y git
 
 WORKDIR /secor
 
-ADD . /secor
+COPY pom.xml .
+RUN mvn -B -e -C -T 1C org.apache.maven.plugins:maven-dependency-plugin:3.0.2:go-offline
 
-RUN mvn verify --fail-never
-RUN mvn package -DskipTests=true -Dmaven.javadoc.skip=true
+ADD . .
+
+RUN mvn -B -e -o -T 1C verify package -DskipTests=true -Dmaven.javadoc.skip=true
 
 FROM openjdk:9-jre-slim
 
