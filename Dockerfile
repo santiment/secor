@@ -16,7 +16,7 @@ FROM openjdk:9-jre-slim
 WORKDIR /opt/secor
 
 COPY --from=0 /secor/target/secor-*-bin.tar.gz .
-RUN tar -zxvf secor-*-bin.tar.gz .
+RUN ls *.tar.gz | xargs -n1 tar zxvf
 
 COPY src/main/scripts/docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
