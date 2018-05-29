@@ -6,6 +6,7 @@ WORKDIR /secor
 
 ADD . /secor
 
+RUN mvn verify --fail-never
 RUN mvn package -DskipTests=true -Dmaven.javadoc.skip=true
 
 FROM openjdk:9-jre-slim
