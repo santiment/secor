@@ -5,17 +5,18 @@ RUN apt-get update && apt-get install -y git
 WORKDIR /secor
 
 COPY pom.xml .
-RUN mvn -B -e -C -T 1C org.apache.maven.plugins:maven-dependency-plugin:3.0.2:go-offline
+RUN mvn verify --fail-never
 
 ADD . .
 
-RUN mvn -B -e -o -T 1C verify package -DskipTests=true -Dmaven.javadoc.skip=true
+RUN mvn package -DskipTests=true -Dmaven.javadoc.skip=true
 
 FROM openjdk:9-jre-slim
 
-RUN mkdir -p /opt/secor
+WORKDIR /opt/secor
 
-COPY --from=0 /secor/target/secor-*-bin.tar.gz /opt/secor/
+COPY --from=0 /secor/target/secor-*-bin.tar.gz .
+RUN tar -zxvf /secor/target/secor-*-bin.tar.gz .
 
 COPY src/main/scripts/docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
