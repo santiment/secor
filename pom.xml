@@ -622,8 +622,8 @@
             <dependencies>
                 <dependency>
                     <groupId>org.apache.kafka</groupId>
-                    <artifactId>kafka_2.12</artifactId>
-                    <version>0.10.2.1</version>
+                    <artifactId>kafka_2.10</artifactId>
+                    <version>0.10.2.0</version>
                     <exclusions>
                         <exclusion>
                             <groupId>org.slf4j</groupId>
@@ -634,15 +634,15 @@
             </dependencies>
         </profile>
         <profile>
-            <id>kafka-0.10.2.1</id>
+            <id>kafka-0.10.2.0</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <dependencies>
                 <dependency>
                     <groupId>org.apache.kafka</groupId>
-                    <artifactId>kafka_2.12</artifactId>
-                    <version>0.10.2.1</version>
+                    <artifactId>kafka_2.10</artifactId>
+                    <version>0.10.2.0</version>
                     <exclusions>
                         <exclusion>
                             <groupId>org.slf4j</groupId>
