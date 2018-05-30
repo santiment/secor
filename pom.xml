@@ -622,8 +622,8 @@
             <dependencies>
                 <dependency>
                     <groupId>org.apache.kafka</groupId>
-                    <artifactId>kafka_2.10</artifactId>
-                    <version>0.10.2.0</version>
+                    <artifactId>kafka_2.11</artifactId>
+                    <version>0.11.0.2</version>
                     <exclusions>
                         <exclusion>
                             <groupId>org.slf4j</groupId>
